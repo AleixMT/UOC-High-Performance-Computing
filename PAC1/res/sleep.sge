@@ -1,0 +1,7 @@
+#!/bin/bash
+#$ -cwd
+#$ -S /bin/bash
+#$ -N sleep_job
+#$ -o sleep.out
+
+sleep 100
