@@ -2,8 +2,9 @@
 
 main()
 {
-  DIR=$(dirname "$(realpath "$0")")
+  DIR=$(dirname "$0")
 
+sleep 10
   if [ ! -f "${DIR}/app" ]; then
     gcc -O3 "${DIR}/app.c" "${DIR}/lib.o" -o "${DIR}/app"
   fi
