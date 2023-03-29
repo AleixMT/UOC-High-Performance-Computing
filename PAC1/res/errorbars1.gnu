@@ -5,4 +5,4 @@ set style data lines
 set xlabel "Resistance [Ohm]" 
 set ylabel "Power [W]" 
 n(x)=1.53**2*x/(5.67+x)**2
-plot [0:50] "data1000.txt" u 1:2:4 t "Power" w yerr, n(x) t "Theory" w lines
+plot [0:50] "../results/data1000.txt" u 1:2:4 t "Power" w yerr, n(x) t "Theory" w lines

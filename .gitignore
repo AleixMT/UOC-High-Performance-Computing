@@ -57,3 +57,10 @@ dkms.conf
 
 whatever
 
+**/results.csv
+PAC1/src/*.txt
+*.png
+PAC1/res/*.png
+./PAC1/res/*.png
+PAC1/res/*.png
+PAC1/res/errorbars1.png
