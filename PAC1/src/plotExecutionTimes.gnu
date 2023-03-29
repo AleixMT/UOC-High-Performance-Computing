@@ -1,10 +1,10 @@
 set terminal pngcairo  transparent enhanced font "arial,10" fontscale 1.0 size 600, 400 
 set output 'executionTimes.png'
-set title "App execution time by argument"
+set title "App execution time by array dimension"
 set style fill solid 0.5
 set style line 1 lc rgb '#404040' lw 1
-set xlabel "Argument"
-set ylabel "Time (seconds)"
+set xlabel "Array dimension (double)"
+set ylabel "Execution time (seconds)"
 set style fill solid
 set boxwidth 0.8
 set boxwidth 0.9

@@ -59,7 +59,7 @@ int main (int argc, char *argv[]) {
     }
   }
 
-  func(N);
+//  func(N);
 
   printf ("Done.\n");
   exit(0);
