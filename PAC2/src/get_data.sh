@@ -28,5 +28,5 @@ EOF
 
 }
 
-study mm
-study mm2
+study mm_parallel
+study mm2_parallel

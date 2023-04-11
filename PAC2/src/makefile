@@ -15,7 +15,7 @@ run : parallel_sum
 run_cluster : parallel_sum.sge parallel_sum
 	qsub parallel_sum.sge
 
-study_3 : parallel_sum parallel_sum.sge process_data.py plot_results_mm.gnu plot_results_mm2.gnu mm mm2
+study_3 : process_data.py plot_results_mm.gnu plot_results_mm2.gnu mm mm2 mm_parallel mm2_parallel
 	bash get_data.sh
 	bash wait_jobs.sh
 	python process_data.py
