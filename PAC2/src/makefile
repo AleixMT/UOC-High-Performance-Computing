@@ -3,6 +3,18 @@ CFLAGS = -Wall -fopenmp -std=c99
 
 all : parallel_sum
 
+counters2 : counters2.c
+	gcc -I/share/apps/papi/include/ counters2.c /share/apps/papi/lib/libpapi.a -o counters2
+
+counters : counters.c
+	gcc -I/share/apps/papi/include/ counters.c /share/apps/papi/lib/libpapi.a -o counters
+
+run_counters2 : counters2
+	./counters2
+
+run_counters : counters
+	./counters
+
 parallel_sum : parallel_sum.c
 	$(CC) $(CFLAGS) -o parallel_sum parallel_sum.c
 
