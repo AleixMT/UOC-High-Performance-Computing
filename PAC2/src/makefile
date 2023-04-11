@@ -24,4 +24,4 @@ study_3 : parallel_sum parallel_sum.sge process_data.py plot_results_mm.gnu plot
 
 .PHONY : clean
 clean :
-	rm -f parallel_sum
+	rm -f parallel_sum job*.sge mm*.txt omp.out. omp.out.*
