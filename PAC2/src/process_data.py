@@ -1,7 +1,7 @@
 
 def aggregate(name):
     results_fp = open(name + "_results.csv", "w+")
-    argument_values = (10, 100, 500, 1000, 1500)
+    argument_values = (1, 2, 3, 4)
     for argument_value in argument_values:
         with open(name + "_" + str(argument_value) + "_data.txt") as fp:
             current_values = []
