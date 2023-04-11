@@ -22,6 +22,12 @@ study_3 : parallel_sum parallel_sum.sge process_data.py plot_results_mm.gnu plot
 	/share/apps/gnuplot/bin/gnuplot plot_results_mm.gnu
 	/share/apps/gnuplot/bin/gnuplot plot_results_mm2.gnu
 
+q9_parallel : q9_parallel.c
+	$(CC) $(CFLAGS) -o q9_parallel q9_parallel.c
+
+run_q9_parallel : q9_parallel
+	time ./q9_parallel
+
 mm : mm.c
 	gcc mm.c -o mm
 
