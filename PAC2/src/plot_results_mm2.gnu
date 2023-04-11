@@ -1,5 +1,5 @@
 set terminal pngcairo  transparent enhanced font "arial,10" fontscale 1.0 size 600, 400 
-set output 'executionTimes.png'
+set output 'mm2_parallel_results.png'
 set title "App execution time by array dimension"
 set style fill solid 0.5
 set style line 1 lc rgb '#404040' lw 1
@@ -16,5 +16,5 @@ set bars 0.5
 
 set object 1 rectangle from screen 0,0 to screen 1,1 fillcolor rgb "white" behind
 
-plot "mm2_results.csv" using 2:3:xtic(1) lc 'gray70' notitle, \
+plot "mm2_parallel_results.csv" using 2:3:xtic(1) lc 'gray70' notitle, \
 

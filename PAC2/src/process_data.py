@@ -16,5 +16,5 @@ def aggregate(name):
             results_fp.write(str(argument_value) + "\t" + str(average) + "\t" + str(standard_deviation)+ "\t" + str(standard_deviation) + "\n")
 
 
-aggregate("mm")
-aggregate("mm2")
+aggregate("mm_parallel")
+aggregate("mm2_parallel")
