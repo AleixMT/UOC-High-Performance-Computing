@@ -3,8 +3,9 @@
 study()
 {
   DIR=$(dirname "$0")
-  if [ ! -f "${DIR}/$1" ]; then
-    gcc "${DIR}/$1.c" –o "${DIR}/$1"
+  cd "${DIR}"
+  if [ ! -f "$1" ]; then
+    gcc "$1.c" –o "$1"
   fi
 
   for i in 1 2 3 4; do
