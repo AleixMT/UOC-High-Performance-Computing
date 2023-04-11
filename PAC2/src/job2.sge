@@ -1,0 +1,10 @@
+#!/bin/bash
+#$ -cwd
+#$ -S /bin/bash
+#$ -N omp
+#$ -o omp.out.
+#$ -e omp.out.
+#$ -pe openmp 2
+
+export OMP_NUM_THREADS=
+{ time ./mm2_parallel 2> /dev/null; } 2>&1 | grep -Eo ^real$'\t'[0-9]+m[0-9]+.[0-9]+s | cut -d $'\t' -f2 >> mm2_parallel_2_data.txt
