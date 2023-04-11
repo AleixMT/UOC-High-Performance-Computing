@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -fopenmp
+CFLAGS = -Wall -fopenmp -std=c99
 
 all : parallel_sum
 
