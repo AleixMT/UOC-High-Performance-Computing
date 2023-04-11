@@ -40,7 +40,6 @@ int main(int argc, char **argv) {
     }
 
 
-    #pragma omp parallel for
     for (i = 0; i < 2; i++) {
         elems = N / 2 + rand() % (N / 4);
         sum = 0;
@@ -54,7 +53,6 @@ int main(int argc, char **argv) {
         avg[i] = sum / elems;
     }
 
-    #pragma omp parallel for
     for(i=0; i<T; i++){
         for(j=0; j<N; j++){
             B[i][j]+=A[i][j]+avg[1];
