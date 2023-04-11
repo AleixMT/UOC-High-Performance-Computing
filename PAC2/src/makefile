@@ -40,6 +40,18 @@ mm : mm.c
 mm2 : mm2.c
 	gcc mm2.c -o mm2
 
+mm_parallel : mm_parallel.c
+	gcc mm_parallel.c -o mm_parallel
+
+mm2_parallel : mm2_parallel.c
+	gcc mm2_parallel.c -o mm2_parallel
+
+run_mm_parallel : mm_parallel
+	time ./mm_parallel
+
+run_mm2_parallel : mm2_parallel
+	time ./mm2_parallel
+
 .PHONY : clean
 clean :
 	rm -f parallel_sum job*.sge mm*.txt omp.out. omp.out.* q9_parallel q9
