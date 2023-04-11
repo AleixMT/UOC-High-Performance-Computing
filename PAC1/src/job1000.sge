@@ -1,0 +1,8 @@
+#!/bin/bash
+#$ -cwd
+#$ -S /bin/bash
+#$ -N hostname_jobname
+#$ -o hostname.out
+#$ -e hostname.err
+
+{ time ./app 1000 2> /dev/null; } 2>&1 | grep -Eo ^real$'\t'[0-9]+m[0-9]+.[0-9]+s | cut -d $'\t' -f2 >> 1000_data.txt
