@@ -1,9 +1,9 @@
 set terminal pngcairo  transparent enhanced font "arial,10" fontscale 1.0 size 600, 400 
 set output 'mm_parallel_results.png'
-set title "App execution time by array dimension"
+set title "mm parallel results"
 set style fill solid 0.5
 set style line 1 lc rgb '#404040' lw 1
-set xlabel "Array dimension (double)"
+set xlabel "Number of EU"
 set ylabel "Execution time (seconds)"
 set style fill solid
 set boxwidth 0.8
