@@ -14,61 +14,52 @@ int main(int argc, char **argv) {
     srand(time(NULL));
 
     #pragma omp parallel for
-    {
-        for (i = 0; i < T; i++) {
-            for (j = 0; j < N; j++) {
-                if (i < T / 2) {
-                    A[i][j] = N / 2 + rand() % (N / 2);
-                } else {
-                    A[i][j] = rand() % (N / 8);
-                }
+    for (i = 0; i < T; i++) {
+        for (j = 0; j < N; j++) {
+            if (i < T / 2) {
+                A[i][j] = N / 2 + rand() % (N / 2);
+            } else {
+                A[i][j] = rand() % (N / 8);
             }
         }
     }
 
     #pragma omp parallel for
-    {
-        for(i=0; i<T; i++){
-            for(j=0; j<N; j++){
-                sum=0;
-                for(k=0; k<A[i][j]; k++){
-                    for(l=0; l<T; l++){
-                        if(l!=i){
-                            sum=(sum+A[l][j])%(N/8);
-                        }
-                    }
-                }
-                B[i][j]=(A[i][j]+sum)%N;
-            }
-        }
-    }
-
-
-    #pragma omp parallel for
-    {
-        for (i = 0; i < 2; i++) {
-            elems = N / 2 + rand() % (N / 4);
-            sum = 0;
-            for (j = 0; j < N; j++) {
-                for (k = 0; k < A[i][j]; k++) {
-                    for (l = 0; l < T; l++) {
-                        sum = (sum + A[l][j]) % (N / 4);
+    for(i=0; i<T; i++){
+        for(j=0; j<N; j++){
+            sum=0;
+            for(k=0; k<A[i][j]; k++){
+                for(l=0; l<T; l++){
+                    if(l!=i){
+                        sum=(sum+A[l][j])%(N/8);
                     }
                 }
             }
-            avg[i] = sum / elems;
+            B[i][j]=(A[i][j]+sum)%N;
         }
+    }
+
+
+    #pragma omp parallel for
+    for (i = 0; i < 2; i++) {
+        elems = N / 2 + rand() % (N / 4);
+        sum = 0;
+        for (j = 0; j < N; j++) {
+            for (k = 0; k < A[i][j]; k++) {
+                for (l = 0; l < T; l++) {
+                    sum = (sum + A[l][j]) % (N / 4);
+                }
+            }
+        }
+        avg[i] = sum / elems;
     }
 
     #pragma omp parallel for
-    {
-        for(i=0; i<T; i++){
-            for(j=0; j<N; j++){
-                B[i][j]+=A[i][j]+avg[1];
-            }
+    for(i=0; i<T; i++){
+        for(j=0; j<N; j++){
+            B[i][j]+=A[i][j]+avg[1];
         }
     }
 
-
-  exit(0);
+    exit(0);
 }
