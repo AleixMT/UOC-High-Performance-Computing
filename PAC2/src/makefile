@@ -54,4 +54,4 @@ run_mm2_parallel : mm2_parallel
 
 .PHONY : clean
 clean :
-	rm -f parallel_sum job*.sge mm*.txt omp.out. omp.out.* q9_parallel q9
+	rm -f parallel_sum job*.sge mm*.txt omp.out. omp.out.* q9_parallel q9 mm2_parallel mm_parallel
