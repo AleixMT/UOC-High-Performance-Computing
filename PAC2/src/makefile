@@ -28,6 +28,12 @@ q9_parallel : q9_parallel.c
 run_q9_parallel : q9_parallel
 	time ./q9_parallel
 
+q9 : q9.c
+	$(CC) $(CFLAGS) -o q9 q9.c
+
+run_q9 : q9
+	time ./q9
+
 mm : mm.c
 	gcc mm.c -o mm
 
@@ -36,4 +42,4 @@ mm2 : mm2.c
 
 .PHONY : clean
 clean :
-	rm -f parallel_sum job*.sge mm*.txt omp.out. omp.out.*
+	rm -f parallel_sum job*.sge mm*.txt omp.out. omp.out.* q9_parallel q9
