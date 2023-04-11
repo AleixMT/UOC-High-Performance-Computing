@@ -9,20 +9,21 @@
 #include <papi.h>
 
 #define SIZE 1000
+#define COUNTERS 9
 
 int main(int argc, char **argv) {
 
   float matrixa[SIZE][SIZE], matrixb[SIZE][SIZE], mresult[SIZE][SIZE];
   int i,j,k;
-  int events[2] = {PAPI_TOT_INS, PAPI_FP_OPS }, ret;
-  long long values[2];
+    int events[COUNTERS] = {PAPI_L1_DCM, PAPI_L1_ICM, PAPI_L2_DCM, PAPI_L2_ICM, PAPI_L1_TCM, PAPI_L2_TCM, PAPI_L3_TCM, PAPI_FP_INS, PAPI_TOT_CYC}, ret;
+  long long values[COUNTERS];
 
-  if (PAPI_num_counters() < 2) {
+  if (PAPI_num_counters() < COUNTERS) {
   	fprintf(stderr, "No hardware counters here, or PAPI not supported.\n");
   	exit(1);
   }
 
-  if ((ret = PAPI_start_counters(events, 2)) != PAPI_OK) {
+  if ((ret = PAPI_start_counters(events, COUNTERS)) != PAPI_OK) {
   	fprintf(stderr, "PAPI failed to start counters: %s\n", PAPI_strerror(ret));
   	exit(1);
   }
@@ -38,13 +39,19 @@ int main(int argc, char **argv) {
     for(i=0;i<SIZE;i++)
       mresult[i][j]=mresult[i][j] + matrixa[i][k]*matrixb[k][j];
 
-  if ((ret = PAPI_read_counters(values, 2)) != PAPI_OK) {
+  if ((ret = PAPI_read_counters(values, COUNTERS)) != PAPI_OK) {
   	fprintf(stderr, "PAPI failed to read counters: %s\n", PAPI_strerror(ret));
   	exit(1);
   }
-
-  printf("Total hardware flops = %lld\n",values[1]);
-  printf("Total instructions %lld\n", values[0]);
+    printf("Level 1 data cache misses = %lld\n", values[0]);
+    printf("Level 1 instruction cache misses = %lld\n", values[1]);
+    printf("Level 2 data cache misses = %lld\n", values[2]);
+    printf("Level 2 instruction cache misses = %lld\n", values[3]);
+    printf("Level 1 cache misses = %lld\n", values[4]);
+    printf("Level 2 cache misses = %lld\n", values[5]);
+    printf("Level 3 cache misses = %lld\n", values[6]);
+    printf("Floating point instructions = %lld\n", values[7]);
+    printf("Total cycles = %lld\n", values[8]);
 
   exit(0);
 }
