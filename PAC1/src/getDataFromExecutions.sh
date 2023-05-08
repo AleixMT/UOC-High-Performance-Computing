@@ -30,3 +30,12 @@ EOF
 }
 
 main "$@"
+
+
+
+
+
+                <toolbar id="mainTab" height="100%">
+                    <button id="import_signals" label="Import from Signals" tooltiptext="Click to retrieve all the available elements from Signals Notebook" zclass="nav-item" />
+                    <button id="export_dataverse" label="Export to CORA RDR" tooltiptext="Click to export all the available elements to CORA RDR Dataverse instance" zclass="nav-item" />
+                </toolbar>

@@ -1,5 +1,3 @@
-
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -16,7 +14,8 @@ int main(int argc, char **argv) {
 
   float matrixa[SIZE][SIZE], matrixb[SIZE][SIZE], mresult[SIZE][SIZE];
   int i,j,k;
-  int events[COUNTERS] = {PAPI_L1_DCM, PAPI_L1_ICM, PAPI_L2_DCM, PAPI_L2_ICM, PAPI_L1_TCM, PAPI_L2_TCM, PAPI_L3_TCM, PAPI_FP_INS, PAPI_TOT_CYC}, ret;
+  int events[COUNTERS] = {PAPI_L1_DCM, PAPI_L1_ICM, PAPI_L2_DCM, PAPI_L2_ICM,
+                          PAPI_L1_TCM, PAPI_L2_TCM, PAPI_L3_TCM, PAPI_FP_INS, PAPI_TOT_CYC}, ret;
   long long values[COUNTERS];
 
   if (PAPI_num_counters() < COUNTERS) {
